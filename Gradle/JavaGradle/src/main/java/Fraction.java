@@ -41,11 +41,15 @@ public class Fraction {
       try {
          // create a new instance
          // Fraction *frac = [[Fraction alloc] init];
+	 int argX = 0;
+         int argY = 0;
+         argX = Integer.parseInt(args[0]);
+         argY = Integer.parseInt(args[1]);
          Fraction frac = new Fraction();
 
          // set the values
-         frac.setNumerator(1);
-         frac.setDenominator(3);
+         frac.setNumerator(argX);
+         frac.setDenominator(argY);
 
          // print it
          System.out.print("The fraction is: ");

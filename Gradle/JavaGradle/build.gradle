@@ -34,10 +34,15 @@ task runAppAgain(type: JavaExec) {
 
   // only works if two arguments are provided
   // Try: using default values in case non or only one parameter is provided
-  if (project.hasProperty("num1") && project.hasProperty("num2")) {
+
+    if (project.hasProperty("num1") && project.hasProperty("num2")) {
     args(project.getProperty('num1'), project.getProperty('num2'));
-  } else if (project.hasProperty("num1")){
+  } else if (project.hasProperty("num1") && project.hasProperty("num2")==false){
     args(project.getProperty('num1'), 1);
+  } else if (project.hasProperty("num1")==false && project.hasProperty("num2")){
+    args('1',project.getProperty('num2'));
+  } else {
+    args('1','2');
   }
 }
 
@@ -49,6 +54,23 @@ task runFraction(type: JavaExec) {
   classpath = sourceSets.main.runtimeClasspath
 
   main = 'Fraction'
+}
+
+task runFrac(type: JavaExec) {
+ classpath = sourceSets.main.runtimeClasspath
+
+  main = 'Fraction'
+
+ if (project.hasProperty("num1") && project.hasProperty("num2")) {
+    args(project.getProperty('num1'), project.getProperty('num2'));
+  } else if (project.hasProperty("num1") && project.hasProperty("num2")==false){
+    args(project.getProperty('num1'), 1);
+  } else if (project.hasProperty("num1")==false && project.hasProperty("num2")){
+    args('1',project.getProperty('num2'));
+  } else {
+    args('3','4');
+  }
+
 }
 
 // Try:
